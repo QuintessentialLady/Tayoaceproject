@@ -1,11 +1,10 @@
 
-name: Lint, Test, and Deploy
+name: Test, and Deploy
 
 on: [push, pull_request]
 
 jobs:
-  lint:
-    name: Lint Code Base
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -36,11 +35,6 @@ jobs:
     name: Deploy to AWS
     runs-on: ubuntu-latest
     steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: packaged-app
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
